@@ -11,6 +11,15 @@ public class Book {
     
     private String title;
     private String works_id;
+    private String resource;
+
+    public String getResource() {
+        return this.resource;
+    }
+
+    public void setResource(String resource) {
+        this.resource = resource;
+    }
 
     public String getTitle() {
         return this.title;
@@ -31,7 +40,8 @@ public class Book {
     public static Book create(JsonObject o) {
         final Book b = new Book();
         b.setTitle(o.getString("title"));
-        b.setWorks_id(o.getString("key"));
+        b.setWorks_id(o.getString("key").split("/")[2]);
+        b.setResource("/book/"+o.getString("key").split("/")[2]);
         return b;
     }
 
