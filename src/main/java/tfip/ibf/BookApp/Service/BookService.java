@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -26,11 +27,15 @@ import java.util.stream.Collectors;
 
 import tfip.ibf.BookApp.BookAppApplication;
 import tfip.ibf.BookApp.Model.Book;
+import tfip.ibf.BookApp.Repository.BookRepository;
 
 @Service
 public class BookService {
     private final Logger logger = Logger.getLogger(BookService.class.getName());
 
+    @Autowired
+    private BookRepository bookRepo; 
+    
 
     public List<Book> search(String searchTerm){ 
         
