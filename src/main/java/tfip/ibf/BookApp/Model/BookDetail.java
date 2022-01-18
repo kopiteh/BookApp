@@ -7,14 +7,22 @@ import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 
-public class Book {
+public class BookDetail {
     
-    private String title ;
+    private String title = "ERROR";
     private String works_id;
     private String resource;
-    private String description;
-    private String excerpt; 
-    private boolean cached; 
+    private String description = "ERROR" ;
+    private String excerpt = "ERROR"; 
+    private boolean cached = false;
+
+    public boolean isCached() {
+        return this.cached;
+    }
+
+    public void setCached(boolean cached) {
+        this.cached = cached;
+    }
 
 	public String getDescription() {
 		return this.description;

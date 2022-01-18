@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import tfip.ibf.BookApp.Model.Book;
+import tfip.ibf.BookApp.Model.BookDetail;
 import tfip.ibf.BookApp.Service.BookService;
 
 import java.util.logging.Level;
@@ -27,7 +28,7 @@ public class BookController {
 
         logger.log(Level.INFO, "works_id to query => %s".formatted(works_id));
 
-        Book book_view = bookSvc.showBookDetail(works_id);  
+        BookDetail book_view = bookSvc.showBookDetail(works_id);  
 
         model.addAttribute("book_view", book_view);
         

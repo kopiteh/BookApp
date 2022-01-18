@@ -16,12 +16,12 @@ public class BookRepository {
     @Qualifier(THE_BEAN)
     private RedisTemplate<String, String> template;
 
-    public void save(String works_id, String value) {
-        template.opsForValue().set(works_id, value, 10L, TimeUnit.MINUTES);
+    public void save(String key, String value) {
+        template.opsForValue().set(key, value, 10L, TimeUnit.MINUTES);
     }
 
-    public Optional<String> get(String works_id) {
-        String value = template.opsForValue().get(works_id);
+    public Optional<String> get(String key) {
+        String value = template.opsForValue().get(key);
         return Optional.ofNullable(value);
     }
 

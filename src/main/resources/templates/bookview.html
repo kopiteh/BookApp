@@ -9,10 +9,10 @@
 <body>
     
     <div>
-        <p>Title: <span data-th-text="${book_view.title} ?: '(no content)'"></span> </p>        
-        <p>Description: <span data-th-text="${book_view.description} ?: '(no content)'"></span></p>
-        <p>Excerpt: </p>
-        <p>Cached: True </p>
+        <p>Title: <span data-th-text="${book_view.title}"></span> </p>        
+        <p>Description: <span data-th-text="${book_view.description}"></span></p>
+        <p>Excerpt: <span data-th-text="${book_view.excerpt}"></span></p>
+        <p>Cached: <span data-th-text="${book_view.cached}"></span> </p>
 
 
     </div>

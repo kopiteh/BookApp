@@ -27,6 +27,7 @@ import java.util.stream.Collectors;
 
 import tfip.ibf.BookApp.BookAppApplication;
 import tfip.ibf.BookApp.Model.Book;
+import tfip.ibf.BookApp.Model.BookDetail;
 import tfip.ibf.BookApp.Repository.BookRepository;
 
 @Service
@@ -35,7 +36,7 @@ public class BookService {
 
     @Autowired
     private BookRepository bookRepo; 
-    
+
 
     public List<Book> search(String searchTerm){ 
         
@@ -75,7 +76,7 @@ public class BookService {
         
     }   
 
-    public Book showBookDetail(String works_id){ 
+    public BookDetail showBookDetail(String works_id){ 
         
         final String url2 = BOOK_DETAIL_URL+works_id+".json";
         logger.log(Level.INFO, "URL2 >>> %s".formatted(url2));
@@ -96,11 +97,7 @@ public class BookService {
                 final JsonReader reader = Json.createReader(is);
                 final JsonObject result = reader.readObject();
                 
-                final Book book_view = new Book();
-                book_view.setTitle(null);
-                book_view.setDescription(null);
-
-                
+                final BookDetail book_view = new BookDetail();
                 book_view.setTitle(result.getString("title"));
                 logger.log(Level.INFO, "Title >>>  %s".formatted(book_view.getTitle()));
                 book_view.setDescription(result.getString("description"));
