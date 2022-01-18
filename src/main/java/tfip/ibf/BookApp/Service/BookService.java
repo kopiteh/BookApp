@@ -69,4 +69,47 @@ public class BookService {
         return Collections.emptyList(); 
         
     }   
+
+    public Book showBookDetail(String works_id){ 
+        
+        final String url2 = BOOK_DETAIL_URL+works_id+".json";
+        logger.log(Level.INFO, "URL2 >>> %s".formatted(url2));
+
+        final RequestEntity<Void> req2 = RequestEntity.get(url2).build();
+            final RestTemplate template2 = new RestTemplate();
+            final ResponseEntity<String> resp2 = template2.exchange(req2, String.class);
+    
+            if (resp2.getStatusCode() != HttpStatus.OK)
+                throw new IllegalArgumentException(
+                    "Error: status code %s".formatted(resp2.getStatusCode().toString())
+                );
+            final String body2 = resp2.getBody();
+    
+            logger.log(Level.INFO, "payload: %s".formatted(body2));
+
+            try (InputStream is = new ByteArrayInputStream(body2.getBytes())) {
+                final JsonReader reader = Json.createReader(is);
+                final JsonObject result = reader.readObject();
+                
+                final Book book_view = new Book();
+                book_view.setTitle(null);
+                book_view.setDescription(null);
+
+                
+                book_view.setTitle(result.getString("title"));
+                logger.log(Level.INFO, "Title >>>  %s".formatted(book_view.getTitle()));
+                book_view.setDescription(result.getString("description"));
+                logger.log(Level.INFO, "Description >>>  %s".formatted(book_view.getDescription()));
+                
+                return book_view; 
+
+
+            }   catch (Exception ex) { 
+                ex.printStackTrace();
+            }
+
+
+        return null;
+        
+    }   
 }

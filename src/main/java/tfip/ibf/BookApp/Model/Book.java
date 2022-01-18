@@ -12,6 +12,25 @@ public class Book {
     private String title;
     private String works_id;
     private String resource;
+    private String description; 
+    private String excerpt; 
+
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getExcerpt() {
+		return this.excerpt;
+	}
+
+	public void setExcerpt(String excerpt) {
+		this.excerpt = excerpt;
+	}
+
 
     public String getResource() {
         return this.resource;

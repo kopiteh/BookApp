@@ -10,7 +10,9 @@
     <h1> Search result for '<span data-th-text="${searchedtitle}"></span>'</h1>
 
     <ul data-th-each="item:${bookList}">
-        <a th:href="${item.resource}">  <span data-th-text="${item.title}"> </span> </a>
+        <li>
+            <a th:href="${item.resource}">  <span data-th-text="${item.title}"> </span> </a>
+        </li>    
     </ul>
     
 

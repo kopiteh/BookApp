@@ -34,17 +34,12 @@ public class SearchController {
     public String searchTitle(@RequestParam String title, Model model){
         //@PathVariable String worksID, 
         logger.log(Level.INFO, "Title to search >>> %s".formatted(title));
-        
-        
-        List<Book> bookList = Collections.emptyList();
-        
-        bookList = bookSvc.search(title); 
-        
 
+        List<Book> bookList = Collections.emptyList();        
+        bookList = bookSvc.search(title); 
         logger.log(Level.INFO, "bookList contains >> \n\n %s".formatted(bookList));
        
-        
-        model.addAttribute("searchedtitle", title);
+        model.addAttribute("searchedtitle", title); 
         model.addAttribute("bookList", bookList);
 
         return "result"; 

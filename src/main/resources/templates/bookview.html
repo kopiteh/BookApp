@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+</head>
+<body>
+    
+    <div>
+        <p>Title: <span data-th-text="${book_view.title} ?: '(no content)'"></span> </p>        
+        <p>Description: <span data-th-text="${book_view.description} ?: '(no content)'"></span></p>
+        <p>Excerpt: </p>
+        <p>Cached: True </p>
+
+
+    </div>
+
+    <a href="/"> Back</a>
+</body>
+</html>
